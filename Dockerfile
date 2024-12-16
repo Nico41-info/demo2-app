@@ -1,6 +1,9 @@
 # Utilisation de l'image Node.js certifiée par Red Hat
 FROM registry.access.redhat.com/ubi8/nodejs-16
 
+# Donner les permissions à tous les utilisateurs
+RUN chmod -R 777 /app
+
 # Définir le répertoire de travail
 WORKDIR /app
 
@@ -12,9 +15,6 @@ RUN npm install
 
 # Copier le fichier d'application dans le conteneur
 COPY app.js /app
-
-# Donner les permissions à tous les utilisateurs
-RUN chmod -R 777 /app
 
 # Exporter le port 3000
 EXPOSE 3000
